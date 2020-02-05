@@ -3,6 +3,11 @@ package proverb
 
 import "fmt"
 
+const (
+	sentence = "For want of a %s the %s was lost."
+	lastSentence = "And all for the want of a %s."
+)
+
 // Proverb given an array of rhyme , generate the relevant proverb 'For Want of a Nail'
 func Proverb(rhyme []string) []string {
 	proverb := make([]string, len(rhyme))
@@ -10,9 +15,9 @@ func Proverb(rhyme []string) []string {
 	for i, r := range rhyme {
 		var message string
 		if i == lastIndex {
-			message = fmt.Sprintf("And all for the want of a %s.", rhyme[0])
+			message = fmt.Sprintf(lastSentence, rhyme[0])
 		} else {
-			message = fmt.Sprintf("For want of a %s the %s was lost.", r, rhyme[i+1])
+			message = fmt.Sprintf(sentence, r, rhyme[i+1])
 		}
 		proverb[i] = message
 	}
