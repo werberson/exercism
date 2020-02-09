@@ -1,24 +1,24 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package triangle should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
+// Package triangle provides a function to identify the kind of a triangle.
 package triangle
 
 import "math"
 
-// Notice KindFromSides() returns this type. Pick a suitable data type.
+// Kind represents the kind of triangle.
 type Kind int
 
+// triangle kind
 const (
-	// Pick values for the following identifiers used by the test program.
 	NaT = iota // not a triangle
 	Equ        // equilateral
 	Iso        // isosceles
 	Sca        // scalene
 )
 
-// KindFromSides should have a comment documenting it.
+// KindFromSides given the triangles side, returns:
+// Equ equilateral if has all three sides the same length.
+// Iso isosceles if has at least two sides the same length.
+// Sca scalene if has all sides of different lengths.
+// NaT Not a triangle if has invalid triangle sides
 func KindFromSides(a, b, c float64) Kind {
 	if math.IsNaN(a) || math.IsNaN(b) || math.IsNaN(c) {
 		return NaT
