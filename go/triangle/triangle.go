@@ -37,11 +37,11 @@ func KindFromSides(a, b, c float64) Kind {
 
 func isNotTriangle(a, b, c float64) bool {
 	for _, v := range []float64{a, b, c} {
-		if math.IsNaN(v) || math.IsInf(v, 0) {
+		if v <= 0 || math.IsNaN(v) || math.IsInf(v, 0) {
 			return true
 		}
 	}
-	if a <= 0 || b <= 0 || c <= 0 || (a+b < c || a+c < b || b+c < a) {
+	if a+b < c || a+c < b || b+c < a {
 		return true
 	}
 	return false
