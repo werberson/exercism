@@ -1,27 +1,25 @@
 // package strand implements the function to transcript DNA to RNA
 package strand
 
+import "strings"
+
 // ToRNA given a DNA strand, return its RNA complement (per RNA transcription).
 func ToRNA(dna string) string {
-	rna := make([]byte, len(dna))
-	for i, nucleotideDNA := range dna {
-		rna[i] = nucleotideToRNA(byte(nucleotideDNA))
-	}
-	return string(rna)
+	return strings.Map(nucleotideToRNA, dna)
 }
 
 // given a DNA nucleotide, return its RNA nucleotide complement.
-func nucleotideToRNA(nucleotide byte) byte {
-	var rna byte
+// if no complement found, returns param itself.
+func nucleotideToRNA(nucleotide rune) rune {
 	switch nucleotide {
 	case 'G':
-		rna = 'C'
+		return 'C'
 	case 'C':
-		rna = 'G'
+		return 'G'
 	case 'T':
-		rna = 'A'
+		return 'A'
 	case 'A':
-		rna = 'U'
+		return 'U'
 	}
-	return rna
+	return nucleotide
 }
