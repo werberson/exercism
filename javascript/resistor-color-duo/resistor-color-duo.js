@@ -16,6 +16,4 @@ const colorCode = {
  * @param colors represents the colors of the first 2 or more color bands of a resistor
  * @returns {number} the combined number value of the first 2 color bands
  */
-export const decodedValue = (colors) => {
-    return  parseInt(colorCode[colors[0]] + colorCode[colors[1]])
-};
+export const decodedValue = (colors) => Number(colorCode[colors[0]] + colorCode[colors[1]]);
