@@ -21,8 +21,8 @@ type DNA string
 func (d DNA) Counts() (Histogram, error) {
 	h := Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0}
 	for _, n := range d {
-		if v, ok := h[n]; ok {
-			h[n] = v + 1
+		if _, ok := h[n]; ok {
+			h[n]++
 		} else {
 			return nil, errors.New(fmt.Sprintf("invalid nucleotide %c", n))
 		}
